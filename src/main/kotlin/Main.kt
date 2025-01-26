@@ -1,62 +1,87 @@
 fun main() {
-    // 1. Информация о типах данных
-    println("Типы данных в Kotlin:")
-    println("---------------------")
-    println("| Тип данных | Описание                     | Пример переменной |")
-    println("|------------|------------------------------|--------------------|")
-    println("| Int        | Целое число                  | val myInt: Int = 10 |")
-    println("| Double     | Число с плавающей точкой     | val myDouble: Double = 10.34698 |")
-    println("| Float      | Число с плавающей точкой     | val myFloat: Float = 4.145f |")
-    println("| String     | Строка                       | val myString: String = \"Привет!\" |")
-    println("| Boolean    | Логическое значение (true/false) | val myBoolean: Boolean = true |")
-    println("| Char       | Символ                       | val myChar: Char = 'A' |")
-    println("| Array      | Массив                       | val myArray: Array<Int> = arrayOf(1, 2, 3) |")
-    println("| List       | Список (неизменяемый)        | val myList: List<String> = listOf(\"a\", \"b\", \"c\") |")
-    println("| MutableList| Список (изменяемый)          | val myMutableList: MutableList<Int> = mutableListOf(1, 2, 3) |")
+    println("----- Операции с числами -----")
+
+    // 1. Двузначное число
+    val twoDigitNumber = 30
+    val tens = twoDigitNumber / 10
+    val units = twoDigitNumber % 10
+    val sumOfDigits = tens + units
+    val productOfDigits = tens * units
+    println("Двузначное число: $twoDigitNumber")
+    println("Десятки: $tens")
+    println("Единицы: $units")
+    println("Сумма цифр: $sumOfDigits")
+    println("Произведение цифр: $productOfDigits")
+
+    // 2. Трехзначное число
+    val threeDigitNumber = 992
+    val hundreds = threeDigitNumber / 100
+    val tens2 = (threeDigitNumber % 100) / 10
+    val units2 = threeDigitNumber % 10
+    val sumOfDigits2 = hundreds + tens2 + units2
+    val productOfDigits2 = hundreds * tens2 * units2
+    println("\nТрехзначное число: $threeDigitNumber")
+    println("Сотни: $hundreds")
+    println("Десятки: $tens2")
+    println("Единицы: $units2")
+    println("Сумма цифр: $sumOfDigits2")
+    println("Произведение цифр: $productOfDigits2")
+
+    // 3. Деление одного числа на другое
+    val dividend = 500
+    val divisor = 5
+    val quotient = dividend / divisor.toDouble()
+    println("\nДеление $dividend на $divisor: $quotient")
+
+    // 4. Возведение в степень
+    val baseNum = 5
+    val exponent = 9
+    val power = Math.pow(baseNum.toDouble(), exponent.toDouble()).toInt()
+    println("\n$baseNum в степени $exponent: $power")
+
+    // 5. Квадратный корень
+    val number = 30
+    val squareRoot = Math.sqrt(number.toDouble())
+    println("\nКвадратный корень из $number: $squareRoot")
 
 
-    // 2. Число с точностью до сотых
-    val num2 = 10.34698
-    println("\nЧисло с точностью до сотых: %.2f".format(num2))
+    println("\n----- Вычисление логических выражений -----")
 
-    // 3. Число e с точностью до десятых
-    val e = Math.E
-    println("\nЧисло e с точностью до десятых: %.1f".format(e))
+    val a = true
+    val b = false
+    val c = false
+    val x = false
+    val y = true
+    val z = false
 
-    // 4. Вывод числа с сообщением перед ним
-    print("Введите число: ")
-    val num4 = readLine()!!.toDouble()
-    println("\nВы ввели число: $num4")
+    println("\n1. a) ${a || b}") // true
+    println("   b) ${a && b}") // false
+    println("   c) ${b || c}") // false
 
-    // 5. Вывод числа с сообщением после него
-    print("Введите число: ")
-    val num5 = readLine()!!.toDouble()
-    println("$num5 — вот какое число Вы ввели")
+    println("\n2. a) ${x || z}") // false
+    println("   b) ${x && y}") // false
+    println("   c) ${x && z}") // false
 
-    // 6. Три числа на одной строке с одним пробелом
-    println("\n1 13 49")
+    println("\n3. a) ${!a && b}") // false
+    println("   b) ${a || !b}") // true
+    println("   c) ${a && b || c}") // false
 
-    // 7. Три числа на одной строке с двумя пробелами
-    println("5  34  87")
+    println("\n4. a) ${!x && y}") // false
+    println("   b) ${x || !y}") // false
+    println("   c) ${x || y && z}") // true
 
-    // 8. Три любых числа на одной строке с двумя пробеламиллл
-    println("12  34  76")
+    println("\n5. a) ${!x && y}") // false
+    println("   b) ${x || !y}") // false
+    println("   c) ${x || y && z}") // true
 
-    // 9. Четыре любых числа на одной строке с одним пробелом
-    println("2 76 45 90")
+    println("\n6. a) ${x || y && !z}") // false
+    println("   b) ${!x && !y}") // true
+    println("   c) ${!(x && z) || y}") // true
+    println("   d) ${x && !y || z}") // false
+    println("   e) ${x && (!y || z)}") // false
+    println("   f) ${x || !(y || z)}") // true
 
-    // 10. Два числа одно под другим
-    println("\n49")
-    println("9")
-
-    // 11. Три числа одно под другим
-    println("\n8")
-    println("16")
-    println("30")
-
-    // 12. Четыре числа "столбиком"
-    println("\n20")
-    println("35")
-    println("50")
-    println("89")
+    println("\n7. a) ${a || !(a && b) || c}") // true
+    println("   b) ${!a || a && (b || c)}") // true
+    println("   c) ${(a || b && !c) && c}") // false
 }
